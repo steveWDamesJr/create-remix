@@ -1,2 +1,2 @@
 # create-remix
-Quickstart for Remix
+Update your contact list with this fantastic UI friendly app built with REMIX.
