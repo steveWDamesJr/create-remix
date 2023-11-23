@@ -1,5 +1,3 @@
-// existing imports
-import { json } from "@remix-run/node";
 import {
   Form,
   Link,
@@ -11,25 +9,25 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-
-import type { LinksFunction } from "@remix-run/node";
-// existing imports
 import appStylesHref from "./app.css";
+import { json } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
+import { createEmptyContact, getContacts } from "./data";
+
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: appStylesHref },
 ];
-
-// existing imports
-import { getContacts } from "./data";
-
-// existing exports
 
 export const loader = async () => {
   const contacts = await getContacts();
   return json({ contacts });
 };
 
+export const action = async () => {
+  const contact = await createEmptyContact();
+  return json({ contact });
+};
 
 export default function App() {
   const { contacts } = useLoaderData<typeof loader>();
